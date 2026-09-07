@@ -1,35 +1,61 @@
 const inputText = document.getElementById("initialText");
 const inputResult = document.getElementById("inputResult");
 
-const chooseCaesarCheck = document.getElementById("cypher-type-caesar");
-const chooseAtbashCheck = document.getElementById("cypher-type-atbash");
-const cypherTypeCheck = document.getElementById("cypher-type");
+const chooseCaesarCheck = document.getElementById("cipher-type-caesar");
+const chooseAtbashCheck = document.getElementById("cipher-type-atbash");
+const cipherTypeCheck = document.getElementById("cipher-type");
 
-const cypherPaneCaesar = document.getElementById("caesar-cypher-pane");
+const cipherPaneCaesar = document.getElementById("caesar-cipher-pane");
+
+const inputDecipher = document.getElementById("inputDecrypt");
+const typeDecipher = document.getElementById("typeDecrypt");
+const shiftDecipher = document.getElementById("shiftDecrypt");
+const shiftDecipherCont = document.getElementById("shiftDecrypt-container");
+const decipherButton = document.getElementById("doDecrypt");
+
+const decipherPane = document.getElementById("charDecrypt");
+
+const tabButtons = document.getElementsByClassName("nav-link");
+
+function cleanInput() {
+    inputText.value = "";
+    inputResult.value = "";
+    inputDecipher.value = "";
+
+    decipherPane.style.display = "none";
+}
+
+window.onload = () => {
+    decipherPane.style.display = "none";
+}
+
+for(const button of tabButtons){
+    button.addEventListener("click", () => cleanInput());
+}
 
 chooseCaesarCheck.addEventListener("click", () => {
-    if(cypherTypeCheck.checked) {
-        cypherTypeCheck.checked = false;
+    if(cipherTypeCheck.checked) {
+        cipherTypeCheck.checked = false;
         const event = new Event("change");
-        cypherTypeCheck.dispatchEvent(event);
+        cipherTypeCheck.dispatchEvent(event);
     }
 });
 
 chooseAtbashCheck.addEventListener("click", () => {
-    if(!cypherTypeCheck.checked) {
-        cypherTypeCheck.checked = true;
+    if(!cipherTypeCheck.checked) {
+        cipherTypeCheck.checked = true;
         const event = new Event("change");
-        cypherTypeCheck.dispatchEvent(event);
+        cipherTypeCheck.dispatchEvent(event);
     }
 });
 
-cypherTypeCheck.addEventListener("change", () => {
-    if(cypherTypeCheck.checked){
-        cypherPaneCaesar.style.display = "none";
+cipherTypeCheck.addEventListener("change", () => {
+    if(cipherTypeCheck.checked){
+        cipherPaneCaesar.style.display = "none";
     } else {
-        cypherPaneCaesar.style.display = "inline";
+        cipherPaneCaesar.style.display = "flex";
     }
 
     const event = new Event("input");
     inputText.dispatchEvent(event);
-})
+});

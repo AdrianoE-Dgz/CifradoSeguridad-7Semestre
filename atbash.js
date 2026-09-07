@@ -6,7 +6,7 @@ const atbashBase = {
     'U': 'F', 'V': 'E', 'W': 'D', 'X': 'C', 'Y': 'B', 'Z': 'A'
 };
 
-function atbashCypher(text) {
+function atbashCipher(text) {
     let result="";
 
     for (let i=0; i<text.length; i++) {
@@ -27,18 +27,18 @@ function atbashCypher(text) {
     return result;
 }
 
-function doAtbashCypher() {
+function doAtbashCipher() {
     const innerText = inputText.value;
-    const resultText = atbashCypher(innerText);
+    const resultText = atbashCipher(innerText);
 
     inputResult.value = resultText;
 }
 
 function updateResult() {
-    if(cypherTypeCheck.checked)
-        doAtbashCypher();
+    if(cipherTypeCheck.checked)
+        doAtbashCipher();
     else
-        doCaesarCypher();
+        doCaesarCipher();
 }
 
 inputText.addEventListener("input", updateResult);

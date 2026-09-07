@@ -7,6 +7,9 @@
     <script src="./script.js" defer></script>
     <script src="./caesar.js" defer></script>
     <script src="./atbash.js" defer></script>
+    <script src="./decipher.js" defer></script>
+
+    <link rel="stylesheet" href="style.css">
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -21,36 +24,38 @@
     ></script>
   </head>
   <body class="p-0 m-0"> 
-    <div class="container-xl">
+    <div class="container-xl card p-4">
       <h3>Eli's Basic Caesar and Atbash</h3>
+      
       <nav class="nav nav-pills flex-column flex-sm-row mb-3">
-        <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" data-bs-toggle="tab" href="#cypher-pane">Cifrado</a>
-        <a class="flex-sm-fill text-sm-center nav-link" data-bs-toggle="tab" href="#decypher-pane">Decifrado</a>
+        <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" data-bs-toggle="tab" href="#cipher-pane">Cifrado</a>
+        <a class="flex-sm-fill text-sm-center nav-link" data-bs-toggle="tab" href="#decipher-pane">Decifrado</a>
       </nav>
+
       <div class="tab-content">
-        <div id="cypher-pane" class="tab-pane show active fade">
+        <div id="cipher-pane" class="tab-pane show active fade">
           <div class="d-flex align-items-center justify-content-center mb-3 text-center" style="column-gap: 0.5rem;">
-            <label class="form-check-label" id="cypher-type-caesar">Caesar</label>
+            <label class="form-check-label" id="cipher-type-caesar">Caesar</label>
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" role="switch" id="cypher-type">
-              <label class="form-check-label" id="cypher-type-atbash">Atbash</label>
+              <input class="form-check-input" type="checkbox" role="switch" id="cipher-type">
+              <label class="form-check-label" id="cipher-type-atbash">Atbash</label>
             </div>
           </div>
 
            <div class="mb-3">
             <label for="inputResult" class="form-label">Texto a cifrar:</label>
-            <input
-              type="text"
+            <textarea
               class="form-control"
+              rows="5"
               id="initialText"
-            />
+            ></textarea>
           </div>
 
-          <div id="caesar-cypher-pane">
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Llave de Letra</label
-              >
+          <div id="caesar-cipher-pane" class="row mb-3">
+            <div class="col-12 col-lg-6">
+              <label for="caesarLetter" class="form-label">
+                Llave de Letra
+              </label>
               <input
                 type="text"
                 class="form-control"
@@ -60,10 +65,10 @@
               />
             </div>
 
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Valor</label
-              >
+            <div class="col-12 col-lg-6">
+              <label for="caesarShift" class="form-label">
+                Valor de Shift
+              </label>
               <input
                 type="number"
                 class="form-control"
@@ -75,19 +80,61 @@
             </div>
           </div>
         </div>
-        <div id="decypher-pane" class="tab-pane fade">
+
+        <div id="decipher-pane" class="tab-pane fade">
+          <div class="mb-3">
+            <label for="inputDecrypt" class="form-label">Texto a decifrar:</label>
+            <textarea
+              class="form-control"
+              rows="5"
+              id="inputDecrypt"
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <button id="doDecrypt" class="btn btn-primary w-100">Decifrar</button>
+          </div>
+
+          <div id="charDecrypt" class="row mb-3">
+            <div class="col">
+              <label for="typeDecrypt" class="form-label">
+                Tipo de cifrado
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="typeDecrypt"
+                readonly
+                disabled
+              />
+            </div>
+
+            <div id="shiftDecrypt-container" class="col-12 col-lg-6">
+              <label for="shiftDecrypt" class="form-label">
+                Valor de Shift probable
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="shiftDecrypt"
+                readonly
+                disabled
+              />
+            </div>
+          </div>
 
         </div>
+
         <div class="mb-3">
-            <label for="inputResult" class="form-label">Resultado</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputResult"
-              disabled
-              readonly
-            />
-          </div>
+          <label for="inputResult" class="form-label">Resultado</label>
+          <textarea
+            class="form-control"
+            rows="5"
+            id="inputResult"
+            disabled
+            readonly
+          ></textarea>
+        </div>
       </div>
     </div>
   </body>

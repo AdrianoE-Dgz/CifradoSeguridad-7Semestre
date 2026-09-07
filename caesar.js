@@ -59,10 +59,8 @@ function decrypt(text, shift, letter) {
             result += char;
         }
     }
-
-    console.log("Decrypt: ",result);
     
-    // return result;
+    return result;
 }
 
 function craftShift(shift, letter) {
@@ -80,7 +78,7 @@ function craftShift(shift, letter) {
     return {alphShift: alphShift, alphKey: alphKey};
 }
 
-function doCaesarCypher() {
+function doCaesarCipher() {
     const innerText = inputText.value;
     const keyLetter = caesarLetter.value;
     const keyValue = parseInt(caesarValue.value);
@@ -88,4 +86,5 @@ function doCaesarCypher() {
     const resultText = encrypt(innerText, keyValue, keyLetter);
 
     inputResult.value = resultText;
+    
 }
