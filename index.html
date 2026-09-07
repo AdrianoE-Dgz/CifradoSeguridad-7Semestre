@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eli's Basic Decrypter</title>
+    <script src="./script.js" defer></script>
+    <script src="./caesar.js" defer></script>
+    <script src="./atbash.js" defer></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="p-0 m-0"> 
+    <div class="container-xl">
+      <h3>Eli's Basic Caesar and Atbash</h3>
+      <nav class="nav nav-pills flex-column flex-sm-row mb-3">
+        <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" data-bs-toggle="tab" href="#cypher-pane">Cifrado</a>
+        <a class="flex-sm-fill text-sm-center nav-link" data-bs-toggle="tab" href="#decypher-pane">Decifrado</a>
+      </nav>
+      <div class="tab-content">
+        <div id="cypher-pane" class="tab-pane show active fade">
+          <div class="d-flex align-items-center justify-content-center mb-3 text-center" style="column-gap: 0.5rem;">
+            <label class="form-check-label" id="cypher-type-caesar">Caesar</label>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="cypher-type">
+              <label class="form-check-label" id="cypher-type-atbash">Atbash</label>
+            </div>
+          </div>
+
+           <div class="mb-3">
+            <label for="inputResult" class="form-label">Texto a cifrar:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="initialText"
+            />
+          </div>
+
+          <div id="caesar-cypher-pane">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Llave de Letra</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="caesarLetter"
+                maxlength="1"
+                value="a"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Valor</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="caesarShift"
+                min="1"
+                max="25"
+                value="1"
+              />
+            </div>
+          </div>
+        </div>
+        <div id="decypher-pane" class="tab-pane fade">
+
+        </div>
+        <div class="mb-3">
+            <label for="inputResult" class="form-label">Resultado</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputResult"
+              disabled
+              readonly
+            />
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
