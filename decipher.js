@@ -29,8 +29,7 @@
 // }
 
 // const freqOrder = "EAOSRNIDLCTUMPBGVYQHFZJÑXKW";
-
-const freqWords = ['EL','LA','DE','QUE','Y','A','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA"];
+const freqWords = ['EL','LA','DE','QUE','Y','A','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA", "MI", "ME", "MIS"];
 
 function detectCipher(text) {
     let frequency = getFrequencies(text);
@@ -46,7 +45,7 @@ function getFrequencies(text) {
     for (let i = 0; i < text.length; i++) {
         const char = text[i].toUpperCase();
 
-        if(/^[ÑA-Z()]+$/.test(char)){
+        if(matchSymbol(char)){
             objeto[char] = ++objeto[char] || 1;
         
             if(!(letters.indexOf(char) >= 0))

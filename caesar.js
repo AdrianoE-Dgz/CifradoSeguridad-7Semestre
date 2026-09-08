@@ -1,8 +1,3 @@
-const caesarLetter = document.getElementById('caesarLetter');
-const caesarValue = document.getElementById('caesarShift');
-
-const alphBase = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-
 function encrypt(text, shift, letter) {
     const {alphShift, alphKey} = craftShift(shift, letter) || null;
     
@@ -11,7 +6,7 @@ function encrypt(text, shift, letter) {
     for (let i=0; i<text.length; i++) {
         let char = text[i];
         
-        if(/^[ña-zÑA-Z()]+$/.test(char)){
+        if(matchSymbol(char)){
             let position = 0;
 
             if (alphKey) {
@@ -41,7 +36,7 @@ function decrypt(text, shift, letter) {
     for (let i=0; i<text.length; i++) {
         let char = text[i];
 
-        if(/^[ña-zÑA-Z()]+$/.test(char)){
+        if(matchSymbol(char)){
             let position = alphShift.search(char.toUpperCase());
 
             if(char == char.toUpperCase()) {

@@ -23,9 +23,14 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="p-0 m-0"> 
+  <body class="p-0 m-0" > 
     <div class="container-xl card p-4">
       <h3>Eli's Basic Caesar and Atbash</h3>
+
+      <div class="mb-3">
+        <label for="inputAlph" class="form-label">Cadena usada para cifrado:</label>
+        <textarea id="inputAlph" class="form-control" rows="1"></textarea>
+      </div>
       
       <nav class="nav nav-pills flex-column flex-sm-row mb-3">
         <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" data-bs-toggle="tab" href="#cipher-pane">Cifrado</a>
@@ -46,7 +51,7 @@
             <label for="inputResult" class="form-label">Texto a cifrar:</label>
             <textarea
               class="form-control"
-              rows="5"
+              rows="4"
               id="initialText"
             ></textarea>
           </div>
@@ -61,7 +66,7 @@
                 class="form-control"
                 id="caesarLetter"
                 maxlength="1"
-                value="a"
+                value="A"
               />
             </div>
 
@@ -74,7 +79,6 @@
                 class="form-control"
                 id="caesarShift"
                 min="1"
-                max="25"
                 value="1"
               />
             </div>
@@ -86,7 +90,7 @@
             <label for="inputDecrypt" class="form-label">Texto a decifrar:</label>
             <textarea
               class="form-control"
-              rows="5"
+              rows="4"
               id="inputDecrypt"
             ></textarea>
           </div>
@@ -129,7 +133,7 @@
           <label for="inputResult" class="form-label">Resultado</label>
           <textarea
             class="form-control"
-            rows="5"
+            rows="4"
             id="inputResult"
             disabled
             readonly
