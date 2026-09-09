@@ -19,16 +19,21 @@ function atbashCipher(text) {
     return result;
 }
 
-function doAtbashCipher() {
-    const innerText = inputText.value.normalize("NFC");
+function doAtbashCipher(innerText) {
     const resultText = atbashCipher(innerText);
 
     inputResult.value = resultText;
 }
 
 function updateResult() {
-    if(cipherTypeCheck.checked)
-        doAtbashCipher();
-    else
-        doCaesarCipher();
+    const innerText = inputText.value.normalize("NFC").match(/./gu);
+
+    if(innerText == null){
+        cleanInput()
+    } else {
+        if(cipherTypeCheck.checked)
+            doAtbashCipher(innerText);
+        else
+            doCaesarCipher(innerText);
+    } 
 }

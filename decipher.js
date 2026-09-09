@@ -32,10 +32,8 @@
 const freqWords = ['EL','LA','DE','QUE','Y','A','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA", "MI", "ME", "MIS"];
 
 function detectCipher(text) {
-    const normalizedText = text.normalize("NFC");
-
-    let frequency = getFrequencies(normalizedText);
-    const result = compareFrequencies(frequency, normalizedText);
+    let frequency = getFrequencies(text);
+    const result = compareFrequencies(frequency, text);
 
     return result;
 }
@@ -126,7 +124,7 @@ function wordFrequency(text) {
 }
 
 decipherButton.addEventListener("click", () => {
-    const textValue = inputDecipher.value;
+    const textValue = inputDecipher.value.normalize("NFC").match(/./gu);
     const {text,type,shift} = detectCipher(textValue);
 
     typeDecipher.value = type;

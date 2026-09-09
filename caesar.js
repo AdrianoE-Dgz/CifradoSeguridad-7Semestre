@@ -10,9 +10,9 @@ function encrypt(text, shift, letter) {
             let position = 0;
 
             if (alphKey) {
-                position = alphKey.search(char.toUpperCase())
+                position = alphKey.indexOf(char.toUpperCase())
             } else {
-                position = alphBase.search(char.toUpperCase())
+                position = alphBase.indexOf(char.toUpperCase())
             }
 
             if(char == char.toUpperCase()) {
@@ -37,7 +37,7 @@ function decrypt(text, shift, letter) {
         let char = text[i];
 
         if(matchSymbol(char)){
-            let position = alphShift.search(char.toUpperCase());
+            let position = alphShift.indexOf(char.toUpperCase());
 
             if(char == char.toUpperCase()) {
                 if (alphKey)
@@ -62,19 +62,21 @@ function craftShift(shift, letter) {
     let alphShift = alphBase;
     let alphKey = null;
 
-    if(!(letter == '' || letter ==null)){
-        alphShift = letter.toUpperCase() + alphShift.split(letter.toUpperCase()).join('');
+    if(!(letter == '' || letter == null)){
+        const index = alphShift.indexOf(letter);
+        alphShift.splice(index,1);
+        alphShift.unshift(letter);
         alphKey = alphShift;
     }
 
-    const subUpper = alphShift.substring(0,shift);
-    alphShift = alphShift.substring(shift,alphShift.length) + subUpper;
+    const subShift = alphShift.slice(0,shift);
+    const remainingSub = alphShift.slice(shift,alphShift.length)
+    alphShift = [...remainingSub, ...subShift];
 
     return {alphShift: alphShift, alphKey: alphKey};
 }
 
-function doCaesarCipher() {
-    const innerText = inputText.value.normalize("NFC");
+function doCaesarCipher(innerText) {
     const keyLetter = caesarLetter.value;
     const keyValue = parseInt(caesarValue.value);
 

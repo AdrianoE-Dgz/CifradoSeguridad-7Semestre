@@ -19,7 +19,7 @@ const decipherPane = document.getElementById("charDecrypt");
 
 const tabButtons = document.getElementsByClassName("nav-link");
 
-let alphBase = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+let alphBase = [];
 let atbashBase = {};
 
 function cleanInput() {
@@ -31,7 +31,7 @@ function cleanInput() {
 }
 
 function setAlphabet() {
-    const givenAlph = inputAlph.value.normalize("NFC") || null;
+    const givenAlph = inputAlph.value.toUpperCase().normalize("NFC").match(/./gu) || null;
 
     if(!givenAlph) {
         inputText.disabled = true;
@@ -49,8 +49,8 @@ function setAlphabet() {
 
         cleanInput();
     } else {
-        alphBase = givenAlph.toUpperCase();
-        setAtbash(givenAlph.toUpperCase());
+        alphBase = givenAlph;
+        setAtbash(givenAlph);
 
         inputText.disabled = false;
         caesarLetter.disabled = false;
@@ -59,6 +59,7 @@ function setAlphabet() {
         decipherButton.disabled = false;
 
         caesarValue.max = alphBase.length - 1;
+        caesarLetter.value = alphBase[0];
 
         if(caesarValue.value > alphBase.length - 1)
             caesarValue.value = alphBase.length - 1;
@@ -67,8 +68,6 @@ function setAlphabet() {
         caesarLetter.addEventListener("input", updateResult);
         caesarValue.addEventListener("input", updateResult);
     }
-
-    console.log(alphBase);
 }
 
 function setAtbash(text) {
@@ -77,7 +76,7 @@ function setAtbash(text) {
     for (let i = 0; i < text.length; i++) {
         const reverseIndex = text.length - 1 - i;
 
-        const char = text[i].toUpperCase().normalize("NFC");
+        const char = text[i];
         const reverseChar = text[reverseIndex].toUpperCase();
 
         atbashBase[char] = reverseChar;
@@ -88,9 +87,7 @@ function matchSymbol(text) {
     for(let i=0;i<alphBase.length;i++) {
         const letter = alphBase[i];
         const compare = text.toUpperCase();
-
-        if(compare === letter){
-            console.log(letter, text.toUpperCase());
+        if(compare == letter){
             return true
         }
     }
