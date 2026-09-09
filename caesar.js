@@ -74,7 +74,7 @@ function craftShift(shift, letter) {
 }
 
 function doCaesarCipher() {
-    const innerText = inputText.value;
+    const innerText = inputText.value.normalize("NFC");
     const keyLetter = caesarLetter.value;
     const keyValue = parseInt(caesarValue.value);
 
