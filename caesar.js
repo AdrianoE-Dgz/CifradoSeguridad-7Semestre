@@ -16,9 +16,9 @@ function encrypt(text, shift, letter) {
             }
 
             if(char == char.toUpperCase()) {
-                result += alphShift[position].toUpperCase()
+                result += alphShift[position].toUpperCase().normalize()
             } else {
-                result += alphShift[position].toLowerCase()
+                result += alphShift[position].toLowerCase().normalize()
             }       
         } else {
             result += char;

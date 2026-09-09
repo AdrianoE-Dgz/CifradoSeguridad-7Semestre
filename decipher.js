@@ -43,7 +43,7 @@ function getFrequencies(text) {
     let letters = []
 
     for (let i = 0; i < text.length; i++) {
-        const char = text[i].toUpperCase();
+        const char = text[i].toUpperCase().normalize();
 
         if(matchSymbol(char)){
             objeto[char] = ++objeto[char] || 1;

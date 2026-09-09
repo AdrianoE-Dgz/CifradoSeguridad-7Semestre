@@ -67,6 +67,8 @@ function setAlphabet() {
         caesarLetter.addEventListener("input", updateResult);
         caesarValue.addEventListener("input", updateResult);
     }
+
+    console.log(alphBase);
 }
 
 function setAtbash(text) {

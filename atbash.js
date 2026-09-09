@@ -6,10 +6,10 @@ function atbashCipher(text) {
         
         if(matchSymbol(char)){
             if(char == char.toUpperCase()) {      
-                result += atbashBase[char].toUpperCase()
+                result += atbashBase[char].toUpperCase().normalize()
             } else {
                 char = char.toUpperCase()
-                result += atbashBase[char].toLowerCase()
+                result += atbashBase[char].toLowerCase().normalize()
             }       
         } else {
             result += char;
