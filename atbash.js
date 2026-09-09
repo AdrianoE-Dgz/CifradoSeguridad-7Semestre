@@ -20,7 +20,7 @@ function atbashCipher(text) {
 }
 
 function doAtbashCipher() {
-    const innerText = inputText.value;
+    const innerText = inputText.value.normalize("NFC");
     const resultText = atbashCipher(innerText);
 
     inputResult.value = resultText;

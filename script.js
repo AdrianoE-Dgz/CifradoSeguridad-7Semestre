@@ -31,7 +31,7 @@ function cleanInput() {
 }
 
 function setAlphabet() {
-    const givenAlph = inputAlph.value || null;
+    const givenAlph = inputAlph.value.normalize("NFC") || null;
 
     if(!givenAlph) {
         inputText.disabled = true;
@@ -49,8 +49,8 @@ function setAlphabet() {
 
         cleanInput();
     } else {
-        alphBase = givenAlph;
-        setAtbash(givenAlph);
+        alphBase = givenAlph.toUpperCase();
+        setAtbash(givenAlph.toUpperCase());
 
         inputText.disabled = false;
         caesarLetter.disabled = false;
@@ -75,7 +75,7 @@ function setAtbash(text) {
     for (let i = 0; i < text.length; i++) {
         const reverseIndex = text.length - 1 - i;
 
-        const char = text[i].toUpperCase();
+        const char = text[i].toUpperCase().normalize("NFC");
         const reverseChar = text[reverseIndex].toUpperCase();
 
         atbashBase[char] = reverseChar;
@@ -85,9 +85,12 @@ function setAtbash(text) {
 function matchSymbol(text) {
     for(let i=0;i<alphBase.length;i++) {
         const letter = alphBase[i];
+        const compare = text.toUpperCase();
 
-        if(text.toUpperCase() === letter)
+        if(compare === letter){
+            console.log(letter, text.toUpperCase());
             return true
+        }
     }
 
     return false

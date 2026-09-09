@@ -32,8 +32,10 @@
 const freqWords = ['EL','LA','DE','QUE','Y','A','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA", "MI", "ME", "MIS"];
 
 function detectCipher(text) {
-    let frequency = getFrequencies(text);
-    const result = compareFrequencies(frequency, text);
+    const normalizedText = text.normalize("NFC");
+
+    let frequency = getFrequencies(normalizedText);
+    const result = compareFrequencies(frequency, normalizedText);
 
     return result;
 }
