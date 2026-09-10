@@ -31,12 +31,16 @@
 // const freqOrder = "EAOSRNIDLCTUMPBGVYQHFZJÑXKW";
 const freqWords = ['EL','LA','DE','QUE','Y','A','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA", "MI", "ME", "MIS"];
 
+// comment
+
 function detectCipher(text) {
     let frequency = getFrequencies(text);
     const result = compareFrequencies(frequency, text);
 
     return result;
 }
+
+// comment
 
 function getFrequencies(text) {
     let objeto = {}
@@ -60,6 +64,8 @@ function getFrequencies(text) {
 
     return objeto;
 }
+
+// comment
 
 function compareFrequencies(frec, text) {
     let maxKey, maxValue = 0, wordSearch = 0;
@@ -109,6 +115,8 @@ function compareFrequencies(frec, text) {
     return result;
 }
 
+// comment
+
 function wordFrequency(text) {
     let cont = 0;
     const vector = text.toUpperCase().split(' ');
@@ -122,20 +130,3 @@ function wordFrequency(text) {
 
     return cont;
 }
-
-decipherButton.addEventListener("click", () => {
-    const textValue = inputDecipher.value.normalize("NFC").match(/./gu);
-    const {text,type,shift} = detectCipher(textValue);
-
-    typeDecipher.value = type;
-
-    if(type == "Atbash") {
-        shiftDecipherCont.style.display = "none";
-    } else if (type == "Caesar") {
-        shiftDecipher.value = shift;
-        shiftDecipherCont.style.display = "inline";
-    }
-
-    inputResult.value = text;
-    decipherPane.style.display = "flex";
-});

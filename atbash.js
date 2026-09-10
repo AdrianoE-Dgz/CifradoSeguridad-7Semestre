@@ -1,3 +1,5 @@
+// comment
+
 function atbashCipher(text) {
     let result="";
 
@@ -19,21 +21,10 @@ function atbashCipher(text) {
     return result;
 }
 
+// comment
+
 function doAtbashCipher(innerText) {
     const resultText = atbashCipher(innerText);
 
     inputResult.value = resultText;
-}
-
-function updateResult() {
-    const innerText = inputText.value.normalize("NFC").match(/./gu);
-
-    if(innerText == null){
-        cleanInput()
-    } else {
-        if(cipherTypeCheck.checked)
-            doAtbashCipher(innerText);
-        else
-            doCaesarCipher(innerText);
-    } 
 }

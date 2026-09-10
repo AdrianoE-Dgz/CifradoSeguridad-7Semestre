@@ -22,6 +22,8 @@ const tabButtons = document.getElementsByClassName("nav-link");
 let alphBase = [];
 let atbashBase = {};
 
+// comment
+
 function cleanInput() {
     inputText.value = "";
     inputResult.value = "";
@@ -29,6 +31,23 @@ function cleanInput() {
 
     decipherPane.style.display = "none";
 }
+
+// comment
+
+function updateResult() {
+    const innerText = inputText.value.normalize("NFC").match(/./gu);
+
+    if(innerText == null){
+        cleanInput()
+    } else {
+        if(cipherTypeCheck.checked)
+            doAtbashCipher(innerText);
+        else
+            doCaesarCipher(innerText);
+    } 
+}
+
+// comment
 
 function setAlphabet() {
     const givenAlph = inputAlph.value.toUpperCase().normalize("NFC").match(/./gu) || null;
@@ -70,6 +89,8 @@ function setAlphabet() {
     }
 }
 
+// comment
+
 function setAtbash(text) {
     atbashBase = {};
 
@@ -83,6 +104,8 @@ function setAtbash(text) {
     }
 }
 
+// comment
+
 function matchSymbol(text) {
     for(let i=0;i<alphBase.length;i++) {
         const letter = alphBase[i];
@@ -94,6 +117,8 @@ function matchSymbol(text) {
 
     return false
 }
+
+// comment
 
 window.onload = () => {
     decipherPane.style.display = "none";
@@ -130,6 +155,23 @@ window.onload = () => {
 
         const event = new Event("input");
         inputText.dispatchEvent(event);
+    });
+
+    decipherButton.addEventListener("click", () => {
+        const textValue = inputDecipher.value.normalize("NFC").match(/./gu);
+        const {text,type,shift} = detectCipher(textValue);
+
+        typeDecipher.value = type;
+
+        if(type == "Atbash") {
+            shiftDecipherCont.style.display = "none";
+        } else if (type == "Caesar") {
+            shiftDecipher.value = shift;
+            shiftDecipherCont.style.display = "inline";
+        }
+
+        inputResult.value = text;
+        decipherPane.style.display = "flex";
     });
 
     inputAlph.addEventListener("input", setAlphabet);
