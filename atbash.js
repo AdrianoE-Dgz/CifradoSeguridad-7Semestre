@@ -1,4 +1,4 @@
-// comment
+// 11
 
 function atbashCipher(text) {
     let result="";
@@ -21,7 +21,7 @@ function atbashCipher(text) {
     return result;
 }
 
-// comment
+// 12
 
 function doAtbashCipher(innerText) {
     const resultText = atbashCipher(innerText);

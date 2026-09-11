@@ -31,7 +31,7 @@
 // const freqOrder = "EAOSRNIDLCTUMPBGVYQHFZJÑXKW";
 const freqWords = ['EL','LA','DE','QUE','Y','A','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA", "MI", "ME", "MIS"];
 
-// comment
+// 13
 
 function detectCipher(text) {
     let frequency = getFrequencies(text);
@@ -40,7 +40,7 @@ function detectCipher(text) {
     return result;
 }
 
-// comment
+// 14
 
 function getFrequencies(text) {
     let objeto = {}
@@ -65,7 +65,7 @@ function getFrequencies(text) {
     return objeto;
 }
 
-// comment
+// 15
 
 function compareFrequencies(frec, text) {
     let maxKey, maxValue = 0, wordSearch = 0;
@@ -115,7 +115,7 @@ function compareFrequencies(frec, text) {
     return result;
 }
 
-// comment
+// 16
 
 function wordFrequency(text) {
     let cont = 0;

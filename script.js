@@ -22,7 +22,7 @@ const tabButtons = document.getElementsByClassName("nav-link");
 let alphBase = [];
 let atbashBase = {};
 
-// comment
+// 1
 
 function cleanInput() {
     inputText.value = "";
@@ -32,7 +32,7 @@ function cleanInput() {
     decipherPane.style.display = "none";
 }
 
-// comment
+// 2
 
 function updateResult() {
     const innerText = inputText.value.normalize("NFC").match(/./gu);
@@ -47,7 +47,7 @@ function updateResult() {
     } 
 }
 
-// comment
+// 3
 
 function setAlphabet() {
     const givenAlph = inputAlph.value.toUpperCase().normalize("NFC").match(/./gu) || null;
@@ -89,7 +89,7 @@ function setAlphabet() {
     }
 }
 
-// comment
+// 4
 
 function setAtbash(text) {
     atbashBase = {};
@@ -104,7 +104,7 @@ function setAtbash(text) {
     }
 }
 
-// comment
+// 5
 
 function matchSymbol(text) {
     for(let i=0;i<alphBase.length;i++) {
@@ -118,7 +118,7 @@ function matchSymbol(text) {
     return false
 }
 
-// comment
+// 6
 
 window.onload = () => {
     decipherPane.style.display = "none";

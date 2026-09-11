@@ -1,4 +1,4 @@
-// comment
+// 7
 
 function encrypt(text, shift, letter) {
     const {alphShift, alphKey} = craftShift(shift, letter) || null;
@@ -30,7 +30,7 @@ function encrypt(text, shift, letter) {
     return result;
 }
 
-// comment
+// 8
 
 function decrypt(text, shift, letter) {
     const {alphShift, alphKey} = craftShift(shift, letter) || null;
@@ -62,7 +62,7 @@ function decrypt(text, shift, letter) {
     return result;
 }
 
-// comment
+// 9
 
 function craftShift(shift, letter) {
     let alphShift = alphBase;
@@ -82,7 +82,7 @@ function craftShift(shift, letter) {
     return {alphShift: alphShift, alphKey: alphKey};
 }
 
-// comment
+// 10
 
 function doCaesarCipher(innerText) {
     const keyLetter = caesarLetter.value;
