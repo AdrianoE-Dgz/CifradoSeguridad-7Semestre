@@ -1,4 +1,4 @@
-const freqWords = ['EL','LA','DE','QUE','Y','A','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA", "MI", "ME", "MIS"];
+const freqWords = ['EL','LA','DE','QUE','Y','A','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA", "MI", "ME", "MIS", "VE", "VER", "VEN", "ESTO", "ESTA", "ESTE", "MÁS", "MAS", "PREGUNTA", "PUNTO", "PUNTOS", "CÉSAR", "CESAR"];
 
 // 13
 
@@ -93,7 +93,8 @@ function wordFrequency(text) {
     for(let i=0;i<freqWords.length;i++){
         for(let j=0;j<vector.length;j++){
             if(freqWords[i] == vector[j])
-                cont++;
+                console.log(vector[j])
+                cont += vector[j].length;
         }
     }
 
