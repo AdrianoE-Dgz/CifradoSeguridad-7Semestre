@@ -91,7 +91,7 @@ function compareFrequencies(frec, text) {
                 result.shift = null;
             }
         } else {
-            const letterIndex = alphBase.indexOf(predicted);
+            const letterIndex = i;
 
             for(let j=1; j<alphBase.length; j++){
                 const {alphShift} = craftShift(j, null);
