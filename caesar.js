@@ -11,17 +11,9 @@ function encrypt(text, shift, letter) {
         if(matchSymbol(char)){
             let position = 0;
 
-            if (alphKey) {
-                position = alphKey.indexOf(char.toUpperCase())
-            } else {
-                position = alphBase.indexOf(char.toUpperCase())
-            }
+            position = alphBase.indexOf(char)
 
-            if(char == char.toUpperCase()) {
-                result += alphShift[position].toUpperCase().normalize()
-            } else {
-                result += alphShift[position].toLowerCase().normalize()
-            }       
+            result += alphShift[position]      
         } else {
             result += char;
         }

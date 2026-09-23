@@ -50,7 +50,7 @@ function updateResult() {
 // 3
 
 function setAlphabet() {
-    const givenAlph = inputAlph.value.toUpperCase().normalize("NFC").match(/./gu) || null;
+    const givenAlph = inputAlph.value.normalize("NFC").match(/./gu) || null;
 
     if(!givenAlph) {
         inputText.disabled = true;
@@ -109,7 +109,7 @@ function setAtbash(text) {
 function matchSymbol(text) {
     for(let i=0;i<alphBase.length;i++) {
         const letter = alphBase[i];
-        const compare = text.toUpperCase();
+        const compare = text;
         if(compare == letter){
             return true
         }
@@ -122,9 +122,10 @@ function matchSymbol(text) {
 
 window.onload = () => {
     decipherPane.style.display = "none";
-    inputAlph.value = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 
     setAlphabet();
+
+    console.log(alphBase)
 
     for(const button of tabButtons){
         button.addEventListener("click", () => cleanInput());
