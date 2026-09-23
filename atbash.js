@@ -7,12 +7,7 @@ function atbashCipher(text) {
         let char = text[i];
         
         if(matchSymbol(char)){
-            if(char == char.toUpperCase()) {      
-                result += atbashBase[char].toUpperCase().normalize()
-            } else {
-                char = char.toUpperCase()
-                result += atbashBase[char].toLowerCase().normalize()
-            }       
+            result += atbashBase[char]
         } else {
             result += char;
         }
@@ -26,5 +21,5 @@ function atbashCipher(text) {
 function doAtbashCipher(innerText) {
     const resultText = atbashCipher(innerText);
 
-    inputResult.value = resultText;
+    VAR_B.value = resultText;
 }

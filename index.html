@@ -28,8 +28,8 @@
       <h3>Eli's Basic Caesar and Atbash</h3>
 
       <div class="mb-3">
-        <label for="inputAlph" class="form-label">Cadena usada para cifrado:</label>
-        <textarea id="inputAlph" class="form-control" rows="1"></textarea>
+        <label for="VAR_C" class="form-label">Cadena usada para cifrado:</label>
+        <textarea id="VAR_C" class="form-control" rows="1"></textarea>
       </div>
       
       <nav class="nav nav-pills flex-column flex-sm-row mb-3">
@@ -48,7 +48,7 @@
           </div>
 
            <div class="mb-3">
-            <label for="inputResult" class="form-label">Texto a cifrar:</label>
+            <label for="VAR_B" class="form-label">Texto a cifrar:</label>
             <textarea
               class="form-control"
               rows="4"
@@ -58,13 +58,13 @@
 
           <div id="caesar-cipher-pane" class="row mb-3">
             <div class="col-12 col-lg-6">
-              <label for="caesarLetter" class="form-label">
+              <label for="VAR_D" class="form-label">
                 Llave de Letra
               </label>
               <input
                 type="text"
                 class="form-control"
-                id="caesarLetter"
+                id="VAR_D"
                 maxlength="1"
                 value="A"
               />
@@ -130,11 +130,11 @@
         </div>
 
         <div class="mb-3">
-          <label for="inputResult" class="form-label">Resultado</label>
+          <label for="VAR_B" class="form-label">Resultado</label>
           <textarea
             class="form-control"
             rows="4"
-            id="inputResult"
+            id="VAR_B"
             disabled
             readonly
           ></textarea>

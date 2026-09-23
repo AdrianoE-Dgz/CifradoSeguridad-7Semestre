@@ -1,19 +1,19 @@
-const inputText = document.getElementById("initialText");
-const inputResult = document.getElementById("inputResult");
-const inputAlph = document.getElementById("inputAlph");
+const VAR_A = document.getElementById("initialText");
+const VAR_B = document.getElementById("VAR_B");
+const VAR_C = document.getElementById("VAR_C");
 
-const caesarLetter = document.getElementById('caesarLetter');
-const caesarValue = document.getElementById('caesarShift');
+const VAR_D = document.getElementById('VAR_D');
+const VAR_E = document.getElementById('caesarShift');
 
-const chooseCaesarCheck = document.getElementById("cipher-type-caesar");
-const chooseAtbashCheck = document.getElementById("cipher-type-atbash");
-const cipherTypeCheck = document.getElementById("cipher-type");
-const cipherPaneCaesar = document.getElementById("caesar-cipher-pane");
+const VAR_F = document.getElementById("cipher-type-caesar");
+const VAR_G = document.getElementById("cipher-type-atbash");
+const VAR_H = document.getElementById("cipher-type");
+const VAR_I = document.getElementById("caesar-cipher-pane");
 
-const inputDecipher = document.getElementById("inputDecrypt");
-const typeDecipher = document.getElementById("typeDecrypt");
-const shiftDecipher = document.getElementById("shiftDecrypt");
-const shiftDecipherCont = document.getElementById("shiftDecrypt-container");
+const VAR_J = document.getElementById("inputDecrypt");
+const VAR_K = document.getElementById("typeDecrypt");
+const VAR_M = document.getElementById("shiftDecrypt");
+const VAR_N = document.getElementById("shiftDecrypt-container");
 const decipherButton = document.getElementById("doDecrypt");
 const decipherPane = document.getElementById("charDecrypt");
 
@@ -25,9 +25,9 @@ let atbashBase = {};
 // 1
 
 function cleanInput() {
-    inputText.value = "";
-    inputResult.value = "";
-    inputDecipher.value = "";
+    VAR_A.value = "";
+    VAR_B.value = "";
+    VAR_J.value = "";
 
     decipherPane.style.display = "none";
 }
@@ -35,12 +35,12 @@ function cleanInput() {
 // 2
 
 function updateResult() {
-    const innerText = inputText.value.normalize("NFC").match(/./gu);
+    const innerText = VAR_A.value.normalize("NFC").match(/./gu);
 
     if(innerText == null){
         cleanInput()
     } else {
-        if(cipherTypeCheck.checked)
+        if(VAR_H.checked)
             doAtbashCipher(innerText);
         else
             doCaesarCipher(innerText);
@@ -50,42 +50,42 @@ function updateResult() {
 // 3
 
 function setAlphabet() {
-    const givenAlph = inputAlph.value.toUpperCase().normalize("NFC").match(/./gu) || null;
+    const givenAlph = VAR_C.value.trim().match(/./gu) || null;
 
     if(!givenAlph) {
-        inputText.disabled = true;
-        caesarLetter.disabled = true;
-        caesarValue.disabled = true;
-        inputDecipher.disabled = true;
+        VAR_A.disabled = true;
+        VAR_D.disabled = true;
+        VAR_E.disabled = true;
+        VAR_J.disabled = true;
         decipherButton.disabled = true;
 
-        caesarValue.max = 1;
-        caesarValue.value = 1;
+        VAR_E.max = 1;
+        VAR_E.value = 1;
 
-        inputText.removeEventListener("input", updateResult);
-        caesarLetter.removeEventListener("input", updateResult);
-        caesarValue.removeEventListener("input", updateResult);
+        VAR_A.removeEventListener("input", updateResult);
+        VAR_D.removeEventListener("input", updateResult);
+        VAR_E.removeEventListener("input", updateResult);
 
         cleanInput();
     } else {
         alphBase = givenAlph;
         setAtbash(givenAlph);
 
-        inputText.disabled = false;
-        caesarLetter.disabled = false;
-        caesarValue.disabled = false;
-        inputDecipher.disabled = false;
+        VAR_A.disabled = false;
+        VAR_D.disabled = false;
+        VAR_E.disabled = false;
+        VAR_J.disabled = false;
         decipherButton.disabled = false;
 
-        caesarValue.max = alphBase.length - 1;
-        caesarLetter.value = alphBase[0];
+        VAR_E.max = alphBase.length - 1;
+        VAR_D.value = alphBase[0];
 
-        if(caesarValue.value > alphBase.length - 1)
-            caesarValue.value = alphBase.length - 1;
+        if(VAR_E.value > alphBase.length - 1)
+            VAR_E.value = alphBase.length - 1;
 
-        inputText.addEventListener("input", updateResult);
-        caesarLetter.addEventListener("input", updateResult);
-        caesarValue.addEventListener("input", updateResult);
+        VAR_A.addEventListener("input", updateResult);
+        VAR_D.addEventListener("input", updateResult);
+        VAR_E.addEventListener("input", updateResult);
     }
 }
 
@@ -98,7 +98,7 @@ function setAtbash(text) {
         const reverseIndex = text.length - 1 - i;
 
         const char = text[i];
-        const reverseChar = text[reverseIndex].toUpperCase();
+        const reverseChar = text[reverseIndex];
 
         atbashBase[char] = reverseChar;
     }
@@ -109,7 +109,8 @@ function setAtbash(text) {
 function matchSymbol(text) {
     for(let i=0;i<alphBase.length;i++) {
         const letter = alphBase[i];
-        const compare = text.toUpperCase();
+        const compare = text;
+
         if(compare == letter){
             return true
         }
@@ -122,7 +123,7 @@ function matchSymbol(text) {
 
 window.onload = () => {
     decipherPane.style.display = "none";
-    inputAlph.value = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+    VAR_C.value = "abcdefghijklmnñopqrstuvwxyz";
 
     setAlphabet();
 
@@ -130,49 +131,49 @@ window.onload = () => {
         button.addEventListener("click", () => cleanInput());
     }
 
-    chooseCaesarCheck.addEventListener("click", () => {
-        if(cipherTypeCheck.checked) {
-            cipherTypeCheck.checked = false;
+    VAR_F.addEventListener("click", () => {
+        if(VAR_H.checked) {
+            VAR_H.checked = false;
             const event = new Event("change");
-            cipherTypeCheck.dispatchEvent(event);
+            VAR_H.dispatchEvent(event);
         }
     });
 
-    chooseAtbashCheck.addEventListener("click", () => {
-        if(!cipherTypeCheck.checked) {
-            cipherTypeCheck.checked = true;
+    VAR_G.addEventListener("click", () => {
+        if(!VAR_H.checked) {
+            VAR_H.checked = true;
             const event = new Event("change");
-            cipherTypeCheck.dispatchEvent(event);
+            VAR_H.dispatchEvent(event);
         }
     });
 
-    cipherTypeCheck.addEventListener("change", () => {
-        if(cipherTypeCheck.checked){
-            cipherPaneCaesar.style.display = "none";
+    VAR_H.addEventListener("change", () => {
+        if(VAR_H.checked){
+            VAR_I.style.display = "none";
         } else {
-            cipherPaneCaesar.style.display = "flex";
+            VAR_I.style.display = "flex";
         }
 
         const event = new Event("input");
-        inputText.dispatchEvent(event);
+        VAR_A.dispatchEvent(event);
     });
 
     decipherButton.addEventListener("click", () => {
-        const textValue = inputDecipher.value.normalize("NFC").match(/./gu);
+        const textValue = VAR_J.value.trim().match(/./gu);
         const {text,type,shift} = detectCipher(textValue);
 
-        typeDecipher.value = type;
+        VAR_K.value = type;
 
         if(type == "Atbash") {
-            shiftDecipherCont.style.display = "none";
+            VAR_N.style.display = "none";
         } else if (type == "Caesar") {
-            shiftDecipher.value = shift;
-            shiftDecipherCont.style.display = "inline";
+            VAR_M.value = shift;
+            VAR_N.style.display = "inline";
         }
 
-        inputResult.value = text;
+        VAR_B.value = text;
         decipherPane.style.display = "flex";
     });
 
-    inputAlph.addEventListener("input", setAlphabet);
+    VAR_C.addEventListener("input", setAlphabet);
 }

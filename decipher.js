@@ -1,4 +1,5 @@
-const freqWords = ['EL','LA','DE','QUE','Y','A','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA", "MI", "ME", "MIS", "VE", "VER", "VEN", "ESTO", "ESTA", "ESTE", "MÁS", "MAS", "PREGUNTA", "PUNTO", "PUNTOS", "CÉSAR", "CESAR"];
+// const freqOrder = "EAOSRNIDLCTUMPBGVYQHFZJÑXKW";
+const freqWords = ['ES','EL','LA','DE','QUE','Y','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA", "MI", "ME", "MIS", "VE", "VER", "VEN", "ESTO", "ESTA", "ESTE", "MÁS", "MAS", "PREGUNTA", "PUNTO", "PUNTOS", "CÉSAR", "CESAR", "VALOR"];
 
 // 13
 
@@ -16,7 +17,7 @@ function getFrequencies(text) {
     let letters = []
 
     for (let i = 0; i < text.length; i++) {
-        const char = text[i].toUpperCase().normalize();
+        const char = text[i];
 
         if(matchSymbol(char)){
             objeto[char] = ++objeto[char] || 1;
@@ -61,7 +62,7 @@ function compareFrequencies(frec, text) {
                 result.shift = null;
             }
         } else {
-            const letterIndex = alphBase.indexOf(predicted);
+            const letterIndex = i;
 
             for(let j=1; j<alphBase.length; j++){
                 const {alphShift} = craftShift(j, null);
@@ -93,8 +94,7 @@ function wordFrequency(text) {
     for(let i=0;i<freqWords.length;i++){
         for(let j=0;j<vector.length;j++){
             if(freqWords[i] == vector[j])
-                console.log(vector[j])
-                cont += vector[j].length;
+                cont++;
         }
     }
 

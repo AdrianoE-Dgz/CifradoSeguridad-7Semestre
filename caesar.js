@@ -9,19 +9,9 @@ function encrypt(text, shift, letter) {
         let char = text[i];
         
         if(matchSymbol(char)){
-            let position = 0;
+            const position = alphBase.indexOf(char);
 
-            if (alphKey) {
-                position = alphKey.indexOf(char.toUpperCase())
-            } else {
-                position = alphBase.indexOf(char.toUpperCase())
-            }
-
-            if(char == char.toUpperCase()) {
-                result += alphShift[position].toUpperCase().normalize()
-            } else {
-                result += alphShift[position].toLowerCase().normalize()
-            }       
+            result += alphShift[position];
         } else {
             result += char;
         }
@@ -38,22 +28,11 @@ function decrypt(text, shift, letter) {
     let result="";
 
     for (let i=0; i<text.length; i++) {
-        let char = text[i];
+        const char = text[i];
 
         if(matchSymbol(char)){
-            let position = alphShift.indexOf(char.toUpperCase());
-
-            if(char == char.toUpperCase()) {
-                if (alphKey)
-                    result += alphKey[position].toUpperCase()
-                else
-                    result += alphBase[position].toUpperCase()
-            } else {
-                if (alphKey)
-                    result += alphKey[position].toLowerCase()
-                else
-                    result += alphBase[position].toLowerCase()
-            }
+            let position = alphShift.indexOf(char);
+            result += alphBase[position]
         } else {
             result += char;
         }
@@ -68,12 +47,12 @@ function craftShift(shift, letter) {
     let alphShift = alphBase;
     let alphKey = null;
 
-    if(!(letter == '' || letter == null)){
-        const index = alphShift.indexOf(letter);
-        alphShift.splice(index,1);
-        alphShift.unshift(letter);
-        alphKey = alphShift;
-    }
+    // if(!(letter == '' || letter == null)){
+    //     const index = alphShift.indexOf(letter);
+    //     alphShift.splice(index,1);
+    //     alphShift.unshift(letter);
+    //     alphKey = alphShift;
+    // }
 
     const subShift = alphShift.slice(0,shift);
     const remainingSub = alphShift.slice(shift,alphShift.length)
@@ -85,11 +64,11 @@ function craftShift(shift, letter) {
 // 10
 
 function doCaesarCipher(innerText) {
-    const keyLetter = caesarLetter.value;
-    const keyValue = parseInt(caesarValue.value);
+    const keyLetter = VAR_D.value;
+    const keyValue = parseInt(VAR_E.value);
 
     const resultText = encrypt(innerText, keyValue, keyLetter);
 
-    inputResult.value = resultText;
+    VAR_B.value = resultText;
     
 }
