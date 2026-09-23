@@ -50,7 +50,7 @@ function updateResult() {
 // 3
 
 function setAlphabet() {
-    const givenAlph = inputAlph.value.normalize("NFC").match(/./gu) || null;
+    const givenAlph = inputAlph.value.trim().match(/./gu) || null;
 
     if(!givenAlph) {
         inputText.disabled = true;
@@ -98,7 +98,7 @@ function setAtbash(text) {
         const reverseIndex = text.length - 1 - i;
 
         const char = text[i];
-        const reverseChar = text[reverseIndex].toUpperCase();
+        const reverseChar = text[reverseIndex];
 
         atbashBase[char] = reverseChar;
     }
@@ -110,6 +110,7 @@ function matchSymbol(text) {
     for(let i=0;i<alphBase.length;i++) {
         const letter = alphBase[i];
         const compare = text;
+
         if(compare == letter){
             return true
         }
@@ -122,10 +123,9 @@ function matchSymbol(text) {
 
 window.onload = () => {
     decipherPane.style.display = "none";
+    inputAlph.value = "abcdefghijklmnñopqrstuvwxyz";
 
     setAlphabet();
-
-    console.log(alphBase)
 
     for(const button of tabButtons){
         button.addEventListener("click", () => cleanInput());
@@ -159,7 +159,7 @@ window.onload = () => {
     });
 
     decipherButton.addEventListener("click", () => {
-        const textValue = inputDecipher.value.normalize("NFC").match(/./gu);
+        const textValue = inputDecipher.value.trim().match(/./gu);
         const {text,type,shift} = detectCipher(textValue);
 
         typeDecipher.value = type;

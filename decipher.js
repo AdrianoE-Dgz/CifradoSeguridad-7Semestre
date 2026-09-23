@@ -29,7 +29,7 @@
 // }
 
 // const freqOrder = "EAOSRNIDLCTUMPBGVYQHFZJÑXKW";
-const freqWords = ['EL','LA','DE','QUE','Y','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA", "MI", "ME", "MIS", "VE", "VER", "VEN", "ESTO", "ESTA", "ESTE", "MÁS", "MAS", "PREGUNTA", "PUNTO", "PUNTOS", "CÉSAR", "CESAR", "VALOR"];
+const freqWords = ['ES','EL','LA','DE','QUE','Y','EN','UN','SER','SE','NO','HABER','POR','CON','SU','SI','LO','HA','YA','YO','LOS','LAS',"AL","SON","SIN","UNO","UNA", "MI", "ME", "MIS", "VE", "VER", "VEN", "ESTO", "ESTA", "ESTE", "MÁS", "MAS", "PREGUNTA", "PUNTO", "PUNTOS", "CÉSAR", "CESAR", "VALOR"];
 // 13
 
 function detectCipher(text) {
@@ -86,7 +86,6 @@ function compareFrequencies(frec, text) {
 
             if(valor > wordSearch){
                 wordSearch = valor;
-                console.log(deciphered)
                 result.type = "Atbash";
                 result.text = deciphered;
                 result.shift = null;
@@ -102,7 +101,6 @@ function compareFrequencies(frec, text) {
                     const valor = wordFrequency(deciphered);
                     
                     if(valor > wordSearch) {
-                        console.log(deciphered)
                         wordSearch = valor;
                         result.type = "Caesar";
                         result.text = deciphered;
@@ -121,7 +119,6 @@ function compareFrequencies(frec, text) {
 function wordFrequency(text) {
     let cont = 0;
     const vector = text.toUpperCase().split(' ');
-    console.log(text)
 
     for(let i=0;i<freqWords.length;i++){
         for(let j=0;j<vector.length;j++){
